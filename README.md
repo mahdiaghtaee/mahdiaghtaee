@@ -1,6 +1,6 @@
 # Mahdi Aghtaee
 
-**Senior C#/.NET Developer | Enterprise AI Backend | RAG Systems | Open Source Contributor**
+**Senior .NET Developer | Enterprise AI | SQL Server | Python | Open Source Contributor**
 
 ![C#](https://img.shields.io/badge/C%23-Developer-blue)
 ![.NET](https://img.shields.io/badge/.NET-Backend-blue)
