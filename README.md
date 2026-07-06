@@ -28,7 +28,7 @@ I actively contribute to the .NET and open-source ecosystem through small, focus
 
 - [OrchardCore PR #19491](https://github.com/OrchardCMS/OrchardCore/pull/19491): adds a safe breadcrumb back link to the content edit page using the existing local `returnUrl` flow.
 - [dotnet/aspnetcore PR #67481](https://github.com/dotnet/aspnetcore/pull/67481): clarifies `ActionLink` URL generation documentation for null protocol and host behavior.
-
+- [SQLAlchemy PR #13417](https://github.com/sqlalchemy/sqlalchemy/pull/13417): adds inline type annotations to the legacy `sqlalchemy.ext.serializer` extension.
 ---
 
 ## Featured Projects
@@ -96,8 +96,8 @@ A computer vision project for Persian license plate recognition using object det
 I am actively improving my GitHub portfolio around three tracks:
 
 1. Enterprise AI backend systems
-2. Professional open-source contributions in the .NET ecosystem
-3. Production-ready software engineering practices: CI, tests, documentation, and clean architecture
+2. Open-source contributions across the .NET and Python ecosystems
+3. SQL Server, AI, and automation platforms with production-ready engineering practices
 
 ---
 
