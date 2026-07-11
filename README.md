@@ -17,35 +17,36 @@ My current focus is on production-oriented AI backends that connect business doc
 
 ## Open Source Contributions
 
-I actively contribute to the .NET and open-source ecosystem through small, focused, reviewable pull requests.
+I actively contribute to the .NET, Python, and open-source ecosystems through small, focused, reviewable pull requests.
 
 ### Merged Contributions
 
+- [dotnet/aspnetcore PR #67481](https://github.com/dotnet/aspnetcore/pull/67481): clarified `ActionLink` URL generation documentation for null protocol and host behavior.
 - [dotnet/docs PR #54567](https://github.com/dotnet/docs/pull/54567): documented `sizeof` behavior for enum types in the C# language reference.
 - [dotnet/docs PR #54559](https://github.com/dotnet/docs/pull/54559): fixed an ASP.NET workload typo in the .NET microservices documentation.
 
 ### Active Contributions
 
 - [OrchardCore PR #19491](https://github.com/OrchardCMS/OrchardCore/pull/19491): adds a safe breadcrumb back link to the content edit page using the existing local `returnUrl` flow.
-- [dotnet/aspnetcore PR #67481](https://github.com/dotnet/aspnetcore/pull/67481): clarifies `ActionLink` URL generation documentation for null protocol and host behavior.
-- [SQLAlchemy PR #13417](https://github.com/sqlalchemy/sqlalchemy/pull/13417): adds inline type annotations to the legacy `sqlalchemy.ext.serializer` extension.
+- [SQLAlchemy PR #13417](https://github.com/sqlalchemy/sqlalchemy/pull/13417): improves type annotations in the legacy `sqlalchemy.ext.serializer` extension using protocols and more precise types.
+
 ---
 
 ## Featured Projects
 
 ### [Enterprise AI Document Assistant](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant)
 
-A production-oriented backend foundation for enterprise document assistants, built with ASP.NET Core, Python FastAPI, Docker Compose, PostgreSQL, and Redis.
+A portfolio-grade enterprise document assistant backend and demo application built with ASP.NET Core, Python FastAPI, Docker Compose, PostgreSQL, Redis, and a practical RAG workflow.
 
-**Highlights**
+**Implemented Highlights**
 
-- Multi-service architecture with .NET API and Python AI service
-- Document upload and metadata management
-- Text extraction, chunking, embedding, and semantic search foundations
-- Swagger/OpenAPI documentation
-- Health endpoints
-- GitHub Actions CI, API tests, and Docker validation foundation
-- Roadmap for RAG question answering, authentication, indexing, observability, and multi-tenancy
+- Multi-service architecture with .NET API, Python AI service, PostgreSQL, Redis, and Web UI
+- Document upload and PostgreSQL-backed metadata persistence
+- Text extraction, chunking, deterministic embeddings, and semantic search
+- RAG-style ask endpoint with grounded source attribution
+- Runnable end-to-end demo script and sample business documents
+- API integration tests, Swagger/OpenAPI documentation, health endpoints, and GitHub Actions CI foundation
+- Roadmap for authentication, persistent vector storage, LLM integration, observability, background processing, and production hardening
 
 ### [Enterprise AI Toolkit](https://github.com/mahdiaghtaee/enterprise-ai-toolkit)
 
@@ -85,7 +86,7 @@ A computer vision project for Persian license plate recognition using object det
 **Backend:** C#, ASP.NET Core, REST APIs, SQL Server, PostgreSQL  
 **AI / RAG:** document processing, semantic search, retrieval-augmented generation, embeddings architecture  
 **Infrastructure:** Docker, Docker Compose, Redis, CI workflows, service-oriented architecture  
-**Open Source:** .NET documentation, ASP.NET Core, OrchardCore CMS  
+**Open Source:** .NET documentation, ASP.NET Core, OrchardCore CMS, SQLAlchemy  
 **Research:** machine learning, medical image analysis, AI model recommendation, software engineering  
 **Leadership:** Founder & CEO, software architecture, product-oriented engineering
 
@@ -104,4 +105,3 @@ I am actively improving my GitHub portfolio around three tracks:
 ## Contact
 
 - GitHub: [@mahdiaghtaee](https://github.com/mahdiaghtaee)
-- Email: `mahdi.aghtaee@gmail.com`
