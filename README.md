@@ -15,6 +15,29 @@ My current focus is on production-oriented AI backends that connect business doc
 
 ---
 
+## Currently Building
+
+### [Enterprise AI Document Assistant](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant)
+
+[![GitHub stars](https://img.shields.io/github/stars/mahdiaghtaee/enterprise-ai-document-assistant?style=social)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/stargazers)
+[![CI](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/ci.yml)
+
+An open-source reference implementation for enterprise document assistants built with ASP.NET Core, Python FastAPI, PostgreSQL, Redis, Docker Compose, semantic search, and a local RAG-style workflow.
+
+```text
+Upload -> Extract -> Chunk -> Embed -> Search -> Ask -> Grounded sources
+```
+
+- Complete multi-service development stack
+- Local deterministic embeddings with no paid AI provider required
+- Document upload, metadata persistence, semantic search, and grounded answers
+- Web UI, Swagger, integration tests, sample documents, and CI
+- Roadmap for pgvector, authentication, LLM providers, OpenTelemetry, and background indexing
+
+[Explore the repository](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant) · [Read the architecture](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/ARCHITECTURE.md) · [View the quick start](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant#quick-start)
+
+---
+
 ## Open Source Contributions
 
 I actively contribute to the .NET, Python, and open-source ecosystems through small, focused, reviewable pull requests.
@@ -33,20 +56,6 @@ I actively contribute to the .NET, Python, and open-source ecosystems through sm
 ---
 
 ## Featured Projects
-
-### [Enterprise AI Document Assistant](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant)
-
-A portfolio-grade enterprise document assistant backend and demo application built with ASP.NET Core, Python FastAPI, Docker Compose, PostgreSQL, Redis, and a practical RAG workflow.
-
-**Implemented Highlights**
-
-- Multi-service architecture with .NET API, Python AI service, PostgreSQL, Redis, and Web UI
-- Document upload and PostgreSQL-backed metadata persistence
-- Text extraction, chunking, deterministic embeddings, and semantic search
-- RAG-style ask endpoint with grounded source attribution
-- Runnable end-to-end demo script and sample business documents
-- API integration tests, Swagger/OpenAPI documentation, health endpoints, and GitHub Actions CI foundation
-- Roadmap for authentication, persistent vector storage, LLM integration, observability, background processing, and production hardening
 
 ### [Enterprise AI Toolkit](https://github.com/mahdiaghtaee/enterprise-ai-toolkit)
 
