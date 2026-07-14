@@ -27,7 +27,7 @@ The current implementation includes:
 - PostgreSQL for document metadata;
 - Redis as infrastructure for future caching or background work;
 - Docker Compose, Swagger, sample documents, and an end-to-end demo;
-- .NET integration tests with retained coverage artifacts, FastAPI endpoint tests, Ruff validation, runtime Compose health checks, CodeQL, Dependabot configuration, and CODEOWNERS.
+- .NET integration tests with retained coverage artifacts, FastAPI endpoint tests, Ruff validation, runtime Compose health checks, CodeQL, Dependency Review, Dependabot configuration, and CODEOWNERS.
 
 The current semantic index is in memory, processing is synchronous, and access control is not implemented. The next engineering steps are pgvector persistence, background indexing, authentication, audit logging, observability, and justified model-provider integrations.
 
