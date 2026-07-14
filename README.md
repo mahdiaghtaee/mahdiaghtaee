@@ -10,8 +10,9 @@ I use this profile to document real project work, architecture decisions, techni
 
 ### [Enterprise AI Document Assistant](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant)
 
-[![GitHub stars](https://img.shields.io/github/stars/mahdiaghtaee/enterprise-ai-document-assistant?style=social)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/stargazers)
 [![CI](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/codeql.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/codeql.yml)
+[![GitHub stars](https://img.shields.io/github/stars/mahdiaghtaee/enterprise-ai-document-assistant?style=social)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/stargazers)
 
 A local-first reference project for integrating document retrieval into an ASP.NET Core backend.
 
@@ -25,7 +26,8 @@ The current implementation includes:
 - Python FastAPI as a separate health and indexing boundary for future Python-specific document or model integrations;
 - PostgreSQL for document metadata;
 - Redis as infrastructure for future caching or background work;
-- Docker Compose, integration tests, health endpoints, Swagger, sample documents, and an end-to-end demo.
+- Docker Compose, Swagger, sample documents, and an end-to-end demo;
+- .NET integration tests with retained coverage artifacts, FastAPI endpoint tests, Ruff validation, runtime Compose health checks, CodeQL, Dependabot configuration, and CODEOWNERS.
 
 The current semantic index is in memory, processing is synchronous, and access control is not implemented. The next engineering steps are pgvector persistence, background indexing, authentication, audit logging, observability, and justified model-provider integrations.
 
@@ -54,7 +56,7 @@ An early .NET foundation for provider-independent AI contracts, with a runnable 
 
 ### [Fast Fair Wait-Free Locks](https://github.com/mahdiaghtaee/fast-fair-wait-free-locks)
 
-A research-to-code project about concurrency, fairness, and wait-free synchronization.
+An exploratory research-to-code project about randomized locking, contention, fairness, and the limits of reproducing algorithmic progress guarantees in Python.
 
 ### [Persian License Plate Recognition](https://github.com/mahdiaghtaee/persian-license-plate-recognition)
 
