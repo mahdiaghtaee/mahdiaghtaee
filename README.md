@@ -14,22 +14,24 @@ I use this profile to document real project work, architecture decisions, techni
 [![CodeQL](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/codeql.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/codeql.yml)
 [![GitHub stars](https://img.shields.io/github/stars/mahdiaghtaee/enterprise-ai-document-assistant?style=social)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/stargazers)
 
-A local-first reference project for integrating document retrieval into an ASP.NET Core backend.
+A local-first reference project for integrating persistent document retrieval into an ASP.NET Core backend.
 
 ```text
-Upload -> Persist metadata -> Extract -> Chunk -> Embed -> Search -> Answer with sources
+Upload -> Persist metadata -> Extract -> Chunk -> Embed -> Persist vectors -> Search -> Answer with sources
 ```
 
 The current implementation includes:
 
-- ASP.NET Core for public APIs, PostgreSQL metadata, local extraction, chunking, deterministic embeddings, semantic retrieval, and source-aware answers;
-- Python FastAPI as a separate health and indexing boundary for future Python-specific document or model integrations;
-- PostgreSQL for document metadata;
+- ASP.NET Core for public APIs, local extraction, chunking, deterministic embeddings, semantic retrieval, and source-aware answers;
+- PostgreSQL for document metadata and persistent pgvector-backed chunk embeddings;
+- configuration-driven `InMemory` and `Postgres` semantic-index providers behind one interface;
+- Python FastAPI as a health and indexing boundary for future Python-specific document or model integrations;
 - Redis as infrastructure for future caching or background work;
 - Docker Compose, Swagger, sample documents, and an end-to-end demo;
-- .NET integration tests with retained coverage artifacts, FastAPI endpoint tests, Ruff validation, runtime Compose health checks, CodeQL, Dependency Review, Dependabot configuration, and CODEOWNERS.
+- .NET integration tests, retained coverage artifacts, FastAPI endpoint tests, Ruff validation, runtime Compose health checks, CodeQL, Dependency Review, Dependabot configuration, and CODEOWNERS;
+- a CI persistence scenario that uploads and searches a document, restarts the API container, and verifies that retrieval still succeeds.
 
-The current semantic index is in memory, processing is synchronous, and access control is not implemented. The next engineering steps are pgvector persistence, background indexing, authentication, audit logging, observability, and justified model-provider integrations.
+Processing is still synchronous, the deterministic embedding model is intended for reproducible development rather than production retrieval quality, and access control is not implemented. The next engineering steps are background indexing, authentication and document authorization, audit logging, observability, and retrieval evaluation.
 
 [Repository](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant) · [Engineering case study](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/CASE_STUDY.md) · [Architecture](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/ARCHITECTURE.md) · [Roadmap](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/ROADMAP.md)
 
@@ -45,7 +47,6 @@ I contribute focused changes to established projects and work through maintainer
 
 ### In review
 
-- [OrchardCore #19491](https://github.com/OrchardCMS/OrchardCore/pull/19491) — adds a safe breadcrumb back link using the existing local `returnUrl` flow.
 - [SQLAlchemy #13417](https://github.com/sqlalchemy/sqlalchemy/pull/13417) — improves typing in the legacy serializer extension using protocols, explicit boundaries, and targeted casts.
 
 ## Other Projects
@@ -73,7 +74,8 @@ An archived computer-vision study project for Persian license-plate and characte
 ## What I Can Discuss in an Interview
 
 - deciding when a .NET application should call a separate Python service and when a modular application is simpler;
-- evolving a deterministic local workflow toward durable vector storage and background processing;
+- designing a configurable semantic-index abstraction with in-memory and pgvector implementations;
+- verifying persistence through container restart tests rather than documentation claims;
 - building test paths that do not depend on external AI providers;
 - designing SQL-heavy workflows, reporting systems, and enterprise integrations;
 - responding to maintainer review and improving code without expanding scope unnecessarily.
