@@ -45,10 +45,6 @@ I contribute focused changes to established projects and work through maintainer
 - [dotnet/docs #54567](https://github.com/dotnet/docs/pull/54567) — documented `sizeof` behavior for enum types in the C# language reference.
 - [dotnet/docs #54559](https://github.com/dotnet/docs/pull/54559) — corrected an ASP.NET workload typo in the .NET microservices documentation.
 
-### In review
-
-- [SQLAlchemy #13417](https://github.com/sqlalchemy/sqlalchemy/pull/13417) — improves typing in the legacy serializer extension using protocols, explicit boundaries, and targeted casts.
-
 ## Other Projects
 
 ### [Enterprise AI Toolkit](https://github.com/mahdiaghtaee/enterprise-ai-toolkit)
@@ -69,7 +65,7 @@ An archived computer-vision study project for Persian license-plate and characte
 **AI systems:** document processing, semantic search, RAG, provider abstraction  
 **Infrastructure:** Docker, Docker Compose, Redis, CI, service-oriented architecture  
 **Engineering:** API contracts, database workflows, architecture documentation, integration testing  
-**Open source:** .NET, ASP.NET Core, OrchardCore, SQLAlchemy
+**Open source:** .NET, ASP.NET Core, technical documentation, focused maintenance contributions
 
 ## What I Can Discuss in an Interview
 
