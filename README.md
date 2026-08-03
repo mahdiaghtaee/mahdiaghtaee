@@ -2,9 +2,9 @@
 
 **Senior .NET Developer | Enterprise Backend Systems | AI-enabled Applications | SQL Server**
 
-I design and build backend systems with **C#**, **ASP.NET Core**, **SQL Server**, **PostgreSQL**, **Redis**, **Docker**, and **OpenTelemetry**. My current work focuses on durable workflows, database-enforced tenant isolation, auditable document processing, observable background services, and measurable AI retrieval without losing the security and testability expected from enterprise software.
+I design and build backend systems with **C#**, **ASP.NET Core**, **SQL Server**, **PostgreSQL**, **Redis**, **Docker**, and **OpenTelemetry**. My current work focuses on durable workflows, database-enforced tenant isolation, auditable document processing, observable background services, measurable retrieval, and provider-optional grounded answers without losing the security and testability expected from enterprise software.
 
-I use this profile to document implemented project work, architecture decisions, technical trade-offs, and focused open-source contributions. I prefer reviewable changes, negative security tests, measurable baselines, and accurate engineering documentation over inflated claims or demo-only features.
+I use this profile to document implemented project work, architecture decisions, technical trade-offs, and focused open-source contributions. I prefer reviewable changes, negative security tests, measurable baselines, explicit failure modes, and accurate engineering documentation over inflated claims or demo-only features.
 
 ## Flagship Project
 
@@ -13,16 +13,17 @@ I use this profile to document implemented project work, architecture decisions,
 [![CI](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/ci.yml)
 [![Audit and observability](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/observability.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/observability.yml)
 [![Retrieval quality](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/retrieval-evaluation.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/retrieval-evaluation.yml)
+[![Grounded answers](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/answer-evaluation.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/answer-evaluation.yml)
 [![CodeQL](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/codeql.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/codeql.yml)
 [![GitHub stars](https://img.shields.io/github/stars/mahdiaghtaee/enterprise-ai-document-assistant?style=social)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/stargazers)
 
-A local-first reference implementation for tenant-isolated document ingestion, durable background processing, persistent semantic retrieval, source-aware answers, auditable operations, and reproducible retrieval-quality evaluation.
+A local-first reference implementation for tenant-isolated document ingestion, durable background processing, persistent semantic retrieval, provider-optional grounded answers, auditable operations, and reproducible quality evaluation.
 
 ```text
 JWT tenant/user -> Correlated RLS-scoped request -> Durable audit + enqueue ->
-Background extract/chunk/embed -> Tenant-scoped retrieval -> Answer with sources
-                                      |
-                                      +-> Versioned corpus + regression baseline
+Background extract/chunk/embed -> Tenant-scoped retrieval -> Grounding gate -> Answer + sources
+                                      |                         |
+                                      +-> Retrieval baseline    +-> Answer baseline
 ```
 
 The implementation includes:
@@ -38,31 +39,38 @@ The implementation includes:
 - transactional job claiming with PostgreSQL `FOR UPDATE SKIP LOCKED`;
 - durable lifecycle states, bounded retries, graceful-shutdown requeue, and abandoned-job recovery;
 - plain-text extraction, fixed-size chunking, deterministic local embeddings, and PostgreSQL/pgvector retrieval;
-- deterministic source-aware Search and Ask endpoints without paid AI credentials;
-- a versioned tenant-safe corpus with exact, ambiguous, vocabulary-mismatch, and empty queries;
-- explicit document/chunk relevance judgments and a repeatable provider-free .NET evaluation command;
-- Precision@K, Recall@K, mean reciprocal rank, empty-query accuracy, mean latency, and p95 latency metrics;
-- a machine-readable observed baseline with reviewed regression thresholds and non-zero failure exit codes;
-- retained CI report artifacts that expose successful queries and known misses rather than hiding weak cases;
-- validated `X-Correlation-ID` handling and W3C trace-context propagation across ASP.NET Core and FastAPI;
+- a versioned tenant-safe retrieval corpus with exact, ambiguous, vocabulary-mismatch, and empty queries;
+- Precision@K, Recall@K, mean reciprocal rank, empty-query accuracy, and local latency metrics;
+- a machine-readable observed retrieval baseline with reviewed thresholds and non-zero regression exit codes;
+- `IAnswerGenerator` and `IGroundedAnswerService` abstractions;
+- deterministic local extractive answers as the credential-free default;
+- an optional OpenAI-compatible Chat Completions answer provider selected through fail-closed configuration;
+- bounded question, source-count, context-character, timeout, and output-token limits;
+- source content delimited as untrusted prompt data rather than instructions;
+- mandatory request-local `[S#]` citations and controlled rejection of uncited or out-of-range answers;
+- explicit `no_evidence`, `low_confidence`, `conflicting_evidence`, and `provider_declined` outcomes;
+- controlled timeout, network, rate-limit, credential, malformed-response, empty-response, and grounding-failure mappings;
+- retrieved source metadata preserved independently from generated text and provider failures;
+- a versioned eight-case grounded-answer evaluation with `1.0` accuracy thresholds for grounding, insufficient evidence, provider-call behavior, and rejection gates;
+- retained machine-readable retrieval and answer-evaluation CI artifacts rather than selected success-only demos;
+- validated `X-Correlation-ID` handling and W3C trace-context propagation across ASP.NET Core, FastAPI, and optional provider calls;
 - log-safe correlation hashing that prevents externally supplied identifiers from becoming raw log entries;
-- structured JSON logging with trace, span, tenant, document, and ingestion-job scopes;
-- OpenTelemetry traces and metrics for HTTP, HttpClient, runtime, Search, Ask, upload, and background processing;
-- optional OTLP/HTTP export while retaining collector-free local execution;
+- structured JSON logging and OpenTelemetry traces/metrics for HTTP, Search, Ask, provider generation, upload, and background processing;
 - liveness and dependency-aware readiness endpoints;
 - an append-only PostgreSQL audit ledger protected by forced tenant RLS;
 - atomic database-trigger audit for document and ingestion state transitions;
-- correlated application audit for list, upload, status, Search, Ask, and audit access;
-- tenant-admin audit visibility and explicit PlatformAdmin cross-tenant visibility;
-- audit and telemetry controls that exclude document text, search queries, questions, bearer tokens, and file content;
+- correlated application audit for list, upload, status, Search, Ask, provider outcomes, and audit access;
+- audit and telemetry controls that exclude document text, search queries, questions, generated answers, provider response bodies, bearer tokens, and API keys;
 - Docker Compose, Swagger, an authenticated Web UI, sample documents, and an end-to-end demo;
-- .NET, PostgreSQL, Python, retrieval-evaluation, audit-boundary, and runtime container tests, coverage floors, CodeQL, Dependency Review, Dependabot, and CODEOWNERS.
+- .NET, PostgreSQL, Python, retrieval-evaluation, answer-evaluation, audit-boundary, and runtime container tests, coverage floors, CodeQL, Dependency Review, Dependabot, and CODEOWNERS.
 
-The version 1 retrieval baseline records `Precision@3 = 0.277778`, `Recall@3 = 0.75`, `MRR = 0.833333`, and empty-query accuracy `1.0`. The small synthetic corpus is useful for deterministic regression detection, not production-accuracy claims. It deliberately records that the ambiguous query retrieves one of two relevant chunks and the vocabulary-mismatch query currently misses at `K = 3`.
+The retrieval version 1 baseline records `Precision@3 = 0.277778`, `Recall@3 = 0.75`, `MRR = 0.833333`, and empty-query accuracy `1.0`. The answer version 1 baseline requires `1.0` accuracy across all eight grounding-gate cases. Both datasets are small and synthetic: they detect controlled regressions but do not establish production factual accuracy.
 
-The deterministic embedding model remains intended for reproducible development rather than production retrieval quality. Tenant lifecycle, privileged-worker separation, encrypted storage, audit retention, production identity-provider integration, telemetry backends, and provider-backed answer generation remain explicit limitations.
+The OpenAI-compatible path is optional and verified with in-memory HTTP doubles rather than a real provider account. Provider activation can transfer authorized questions and document excerpts outside the deployment boundary and therefore requires separate review of retention, residency, training terms, subprocessors, cost, secrets, and contractual controls.
 
-[Repository](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant) · [Retrieval evaluation](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/RETRIEVAL_EVALUATION.md) · [Audit and observability](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/HEALTH_AND_OBSERVABILITY.md) · [Tenant isolation](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/TENANT_ISOLATION.md) · [Authentication](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/AUTHENTICATION_AND_AUTHORIZATION.md) · [Architecture](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/ARCHITECTURE.md) · [Roadmap](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/ROADMAP.md)
+Tenant lifecycle, privileged-worker separation, encrypted storage, centralized secret management, audit retention, production identity-provider integration, telemetry backends, and representative production-quality evaluation remain explicit limitations.
+
+[Repository](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant) · [Grounded Ask](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/RAG_ASK_ENDPOINT.md) · [Retrieval evaluation](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/RETRIEVAL_EVALUATION.md) · [Audit and observability](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/HEALTH_AND_OBSERVABILITY.md) · [Tenant isolation](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/TENANT_ISOLATION.md) · [Authentication](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/AUTHENTICATION_AND_AUTHORIZATION.md) · [Architecture](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/ARCHITECTURE.md) · [Roadmap](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/blob/main/docs/ROADMAP.md)
 
 ## Open-source Contributions
 
@@ -94,8 +102,8 @@ An archived computer-vision study project for Persian license-plate and characte
 **Data and workflows:** transactions, durable jobs, lifecycle state, reporting, enterprise integrations  
 **Security:** JWT, RBAC, tenant isolation, PostgreSQL RLS, append-only audit, negative authorization testing  
 **Observability:** correlation strategy, structured logging, OpenTelemetry traces and metrics, liveness/readiness  
-**AI systems:** document processing, semantic retrieval, RAG foundations, provider abstraction, measurable evaluation  
-**Evaluation:** relevance judgments, Precision@K, Recall@K, MRR, regression baselines, machine-readable CI artifacts  
+**AI systems:** document processing, semantic retrieval, RAG grounding, provider abstraction, controlled provider errors  
+**Evaluation:** relevance judgments, Precision@K, Recall@K, MRR, citation gates, insufficient-evidence cases, regression baselines  
 **Infrastructure:** Docker, Docker Compose, Redis, CI, background services, service boundaries  
 **Engineering:** API contracts, architecture documentation, integration testing, reliability, security, and operational diagnostics  
 **Open source:** .NET, ASP.NET Core, technical documentation, focused maintenance contributions
@@ -106,34 +114,35 @@ An archived computer-vision study project for Persian license-plate and characte
 - safely claiming PostgreSQL jobs across multiple application instances with `SKIP LOCKED`;
 - designing bounded retry, cancellation, graceful shutdown, and abandoned-work recovery;
 - deriving owner and tenant identity from JWT claims without accepting security scope from client payloads;
-- distinguishing tenant-scoped `Admin` from explicit cross-tenant `PlatformAdmin` access;
 - enforcing tenant isolation through both application context and PostgreSQL forced Row-Level Security;
 - using separate non-superuser runtime and privileged database roles;
 - designing append-only tenant audit storage with database triggers and RLS;
-- committing base audit records atomically with document and ingestion state changes;
 - separating durable audit records from diagnostic telemetry;
-- propagating correlation and W3C trace context between ASP.NET Core and FastAPI;
-- preventing user-controlled identifiers and sensitive document/query content from entering logs or telemetry;
-- choosing low-cardinality metrics and instrumenting background workflows with meaningful spans;
-- designing liveness and dependency-aware readiness checks;
+- propagating correlation and W3C trace context between ASP.NET Core, FastAPI, and outbound provider requests;
+- preventing sensitive document, query, answer, provider-response, and credential content from entering audit or metric dimensions;
 - defining a versioned retrieval corpus and explicit chunk-level relevance judgments;
 - calculating and interpreting Precision@K, Recall@K, reciprocal rank, and latency without overstating a small corpus;
-- preserving known ambiguous and vocabulary-mismatch failures as measurable evidence rather than selecting only successful demos;
-- designing threshold governance so an intended ranking change requires an explicit corpus or baseline review;
-- using machine-readable CI artifacts to compare retrieval changes before integrating external providers;
-- using CI to expose hidden privilege inheritance and prove append-only database behavior;
-- verifying persistence, authorization, audit isolation, recovery, and retrieval quality through independent automated checks;
+- preserving ambiguous and vocabulary-mismatch failures as measurable evidence rather than selecting only successful demos;
+- designing a provider-neutral answer-generation abstraction with deterministic and OpenAI-compatible implementations;
+- keeping retrieved source metadata independent from model-generated text;
+- bounding provider context and treating retrieved document instructions as untrusted prompt data;
+- enforcing request-local citations and rejecting unsupported provider answers;
+- distinguishing insufficient evidence from retryable provider failure and permanent provider rejection;
+- mapping provider timeout, rate limit, credential, malformed-response, and network failures into stable API contracts;
+- testing provider protocol and grounding behavior without real API credentials;
+- governing strict machine-readable answer-quality thresholds rather than claiming unmeasured factual accuracy;
+- verifying persistence, authorization, audit isolation, recovery, retrieval quality, and grounding gates through independent automated checks;
 - deciding when a .NET application should call a Python service and when a modular application is simpler;
 - designing SQL-heavy workflows, reporting systems, and enterprise integrations;
 - responding to automated security review and changing the design rather than suppressing findings.
 
 ## Current Engineering Priorities
 
-1. one optional provider-backed grounded-answer implementation while preserving deterministic local mode and source metadata;
-2. answer-quality evaluation for insufficient, conflicting, and unsupported evidence;
-3. tenant provisioning, membership lifecycle, invitation workflows, and separation of the privileged worker trust boundary;
-4. audit retention, telemetry dashboards, alert rules, and operational runbooks;
-5. safe PDF/DOCX extraction boundaries, malware scanning, and file-signature validation.
+1. tenant provisioning, membership lifecycle, invitation workflows, and separation of the privileged worker trust boundary;
+2. audit retention, telemetry dashboards, alert rules, and operational runbooks;
+3. safe PDF/DOCX extraction boundaries, malware scanning, and file-signature validation;
+4. a larger reviewed multilingual retrieval/answer corpus and one approved non-sensitive external-provider comparison;
+5. centralized secret management, managed key rotation, and provider-governance integration.
 
 ## Contact
 
