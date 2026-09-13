@@ -17,6 +17,17 @@ My engineering approach emphasizes explicit trust boundaries, durable processing
 - **AI engineering:** RAG, semantic retrieval, grounded answers, provider abstraction, evaluation and citation gates
 - **Infrastructure:** Docker Compose, Redis, CI/CD, GitHub Actions, CodeQL, dependency automation
 
+## Portfolio Snapshot
+
+| Project | Role in portfolio | Status |
+|---|---|---|
+| [Enterprise AI Document Assistant](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant) | Flagship enterprise backend + AI system | Active, release-driven |
+| [Enterprise AI Toolkit](https://github.com/mahdiaghtaee/enterprise-ai-toolkit) | Reusable provider-independent .NET contracts | Early foundation |
+| [Fast Fair Wait-Free Locks](https://github.com/mahdiaghtaee/fast-fair-wait-free-locks) | Reproducible concurrency research artifact | Experimental |
+| [Persian License Plate Recognition](https://github.com/mahdiaghtaee/persian-license-plate-recognition) | Computer-vision study with documented provenance | Archived |
+
+The portfolio is intentionally centered on a small number of reviewable projects rather than repository count. Forks used for upstream contributions are secondary to the projects above.
+
 ## Featured Project
 
 ### [Enterprise AI Document Assistant](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant)
@@ -80,6 +91,9 @@ I am currently deepening work around:
 - secure document-processing boundaries including OCR and complex layouts;
 - scalable .NET backend architecture and enterprise data workflows.
 
-## Contact
+## Contact & Collaboration
 
 - GitHub: [@mahdiaghtaee](https://github.com/mahdiaghtaee)
+- For repository-specific technical collaboration, use the relevant project's Issues or Pull Requests so design decisions and evidence remain reviewable.
+
+No additional public contact channel is listed here unless it can be verified and intentionally maintained.
