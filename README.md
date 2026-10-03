@@ -22,7 +22,7 @@ My engineering approach emphasizes explicit trust boundaries, durable processing
 | Project | Role in portfolio | Status |
 |---|---|---|
 | [Enterprise AI Document Assistant](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant) | Flagship enterprise backend + AI system | Active, release-driven |
-| [Enterprise AI Toolkit](https://github.com/mahdiaghtaee/enterprise-ai-toolkit) | Reusable provider-independent .NET contracts | Early foundation |
+| [Enterprise AI Toolkit](https://github.com/mahdiaghtaee/enterprise-ai-toolkit) | Reusable provider-independent .NET contracts | Chat + embedding foundation |
 | [Fast Fair Wait-Free Locks](https://github.com/mahdiaghtaee/fast-fair-wait-free-locks) | Reproducible concurrency research artifact | Experimental |
 | [Persian License Plate Recognition](https://github.com/mahdiaghtaee/persian-license-plate-recognition) | Computer-vision study with documented provenance | Archived |
 
@@ -65,7 +65,7 @@ Focused contributions merged into established .NET projects:
 ## Selected Projects
 
 ### [Enterprise AI Toolkit](https://github.com/mahdiaghtaee/enterprise-ai-toolkit)
-A .NET foundation for provider-independent AI contracts with a deterministic provider, runnable console sample, tests, and CI.
+A .NET foundation for provider-independent chat and embedding contracts with deterministic local providers, explicit vector dimensions/input mapping, a runnable console sample, tests, and CI.
 
 ### [Fast Fair Wait-Free Locks](https://github.com/mahdiaghtaee/fast-fair-wait-free-locks)
 An exploratory concurrency project focused on randomized locking, contention, fairness, reproducible testing, and careful treatment of algorithmic guarantees.
