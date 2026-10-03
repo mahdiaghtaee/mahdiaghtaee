@@ -21,9 +21,9 @@ My engineering approach emphasizes explicit trust boundaries, durable processing
 
 | Project | Role in portfolio | Status |
 |---|---|---|
-| [Enterprise AI Document Assistant](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant) | Flagship enterprise backend + AI system | Active, release-driven |
-| [Enterprise AI Toolkit](https://github.com/mahdiaghtaee/enterprise-ai-toolkit) | Reusable provider-independent .NET contracts | Chat + embedding foundation |
-| [Fast Fair Wait-Free Locks](https://github.com/mahdiaghtaee/fast-fair-wait-free-locks) | Reproducible concurrency research artifact | Experimental |
+| [Enterprise AI Document Assistant](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant) | Flagship enterprise backend + AI reference system | Maintenance — v0.5.1 |
+| [Enterprise AI Toolkit](https://github.com/mahdiaghtaee/enterprise-ai-toolkit) | Reusable provider-independent .NET contracts | Stable foundation — v0.2.0 |
+| [Fast Fair Wait-Free Locks](https://github.com/mahdiaghtaee/fast-fair-wait-free-locks) | Concurrency research artifact | Archived — v0.1.0 |
 | [Persian License Plate Recognition](https://github.com/mahdiaghtaee/persian-license-plate-recognition) | Computer-vision study with documented provenance | Archived |
 
 The portfolio is intentionally centered on a small number of reviewable projects rather than repository count. Forks used for upstream contributions are secondary to the projects above.
@@ -37,7 +37,7 @@ The portfolio is intentionally centered on a small number of reviewable projects
 [![Dependency Review](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/dependency-review.yml)
 [![Multilingual quality](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/multilingual-evaluation.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/multilingual-evaluation.yml)
 
-A local-first enterprise document platform built around **ASP.NET Core, FastAPI, PostgreSQL, pgvector, Redis, Docker Compose, semantic retrieval, and grounded AI answers**.
+A completed v0.5.x reference milestone for a local-first enterprise document platform built around **ASP.NET Core, FastAPI, PostgreSQL, pgvector, Redis, Docker Compose, semantic retrieval, and grounded AI answers**. The repository is now in maintenance mode.
 
 Selected engineering capabilities:
 
@@ -65,10 +65,10 @@ Focused contributions merged into established .NET projects:
 ## Selected Projects
 
 ### [Enterprise AI Toolkit](https://github.com/mahdiaghtaee/enterprise-ai-toolkit)
-A .NET foundation for provider-independent chat and embedding contracts with deterministic local providers, explicit vector dimensions/input mapping, a runnable console sample, tests, and CI.
+A stable v0.2.0 .NET foundation for provider-independent chat and embedding contracts with deterministic local providers, explicit vector dimensions/input mapping, a runnable console sample, tests, and CI. Active feature development is paused.
 
 ### [Fast Fair Wait-Free Locks](https://github.com/mahdiaghtaee/fast-fair-wait-free-locks)
-An exploratory concurrency project focused on randomized locking, contention, fairness, reproducible testing, and careful treatment of algorithmic guarantees.
+An archived research artifact preserving scope, attribution, reproducibility requirements, and explicit limitations without claiming a completed benchmark or production synchronization primitive.
 
 ### [Persian License Plate Recognition](https://github.com/mahdiaghtaee/persian-license-plate-recognition)
 An archived computer-vision study retained with explicit attribution, reproducibility boundaries, and documented limitations.
@@ -83,15 +83,16 @@ An archived computer-vision study retained with explicit attribution, reproducib
 - Measure retrieval and answer quality instead of relying on selected demos.
 - Keep documentation aligned with implemented behavior.
 
-## Current Technical Direction
+## Current Portfolio Status
 
-I am currently deepening work around:
+The current public project cycle is closed cleanly:
 
-- production-grade multi-tenant identity and authorization;
-- enterprise observability, audit integrity, retention, SLOs, and operational runbooks;
-- multilingual and adversarial retrieval/answer evaluation;
-- secure document-processing boundaries including OCR and complex layouts;
-- scalable .NET backend architecture and enterprise data workflows.
+- Enterprise AI Document Assistant is maintained as the completed v0.5.1 reference milestone;
+- Enterprise AI Toolkit is maintained as the stable v0.2.0 chat/embedding foundation;
+- Fast Fair Wait-Free Locks is retained as an archived research artifact;
+- broader runtime migrations and speculative framework expansion are deferred rather than left as active promises.
+
+New project work is intentionally kept separate so these repositories remain reviewable at their documented boundaries.
 
 ## Contact & Collaboration
 
