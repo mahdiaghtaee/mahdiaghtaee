@@ -35,6 +35,7 @@ The portfolio is intentionally centered on a small number of reviewable projects
 [![CI](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/codeql.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/codeql.yml)
 [![Dependency Review](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/dependency-review.yml)
+[![Multilingual quality](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/multilingual-evaluation.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/multilingual-evaluation.yml)
 
 A local-first enterprise document platform built around **ASP.NET Core, FastAPI, PostgreSQL, pgvector, Redis, Docker Compose, semantic retrieval, and grounded AI answers**.
 
@@ -46,9 +47,10 @@ Selected engineering capabilities:
 - separated public API, platform-management, and privileged Worker database identities;
 - safe TXT/PDF/DOCX ingestion with bounded parsing, OOXML validation, spoofed-file rejection, and explicit OCR-required outcomes;
 - persistent pgvector semantic retrieval with reproducible Precision@K, Recall@K, and MRR evaluation;
+- reviewed English, Persian, and mixed-language retrieval/answer evaluation with per-language/category gates and deterministic bootstrap intervals;
 - provider-neutral grounded-answer generation with mandatory citations and insufficient-evidence handling;
 - append-only tenant audit storage, OpenTelemetry traces/metrics, correlation propagation, and operational observability;
-- independent CI coverage for application tests, PostgreSQL integration, document formats, retrieval, grounding, Dependency Review, and CodeQL.
+- independent CI coverage for application tests, PostgreSQL integration, document formats, retrieval, multilingual quality, grounding, Dependency Review, and CodeQL.
 
 **Repository:** [enterprise-ai-document-assistant](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant)
 
