@@ -21,12 +21,31 @@ My engineering approach emphasizes explicit trust boundaries, durable processing
 
 | Project | Role in portfolio | Status |
 |---|---|---|
+| [Agent Runtime Guard for .NET](https://github.com/mahdiaghtaee/agent-runtime-guard-dotnet) | Pre-execution policy guard for AI/MCP tool calls | Active — v0.2.0 |
 | [Enterprise AI Document Assistant](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant) | Flagship enterprise backend + AI reference system | Maintenance — v0.5.1 |
 | [Enterprise AI Toolkit](https://github.com/mahdiaghtaee/enterprise-ai-toolkit) | Reusable provider-independent .NET contracts | Stable foundation — v0.2.0 |
 | [Fast Fair Wait-Free Locks](https://github.com/mahdiaghtaee/fast-fair-wait-free-locks) | Concurrency research artifact | Archived — v0.1.0 |
 | [Persian License Plate Recognition](https://github.com/mahdiaghtaee/persian-license-plate-recognition) | Computer-vision study with documented provenance | Archived |
 
 The portfolio is intentionally centered on a small number of reviewable projects rather than repository count. Forks used for upstream contributions are secondary to the projects above.
+
+## Current Project
+
+### [Agent Runtime Guard for .NET](https://github.com/mahdiaghtaee/agent-runtime-guard-dotnet)
+
+A focused .NET project for evaluating AI-agent and MCP tool actions before execution.
+
+The current v0.2.0 milestone includes:
+
+- deterministic `Allow`, `RequireApproval`, and `Deny` policy decisions;
+- a stdio MCP proxy that intercepts `tools/call` before the upstream process executes it;
+- tests proving denied tool calls do not reach upstream input;
+- opt-in SQLite decision receipts with bounded metadata, retention, and session-scoped JSONL export;
+- explicit data-minimization tests that exclude prompts, MCP arguments, policy reasons, tags, tool results, and upstream stderr from the receipt schema.
+
+The project is intentionally scoped as an early engineering reference rather than a production security platform.
+
+**Repository:** [agent-runtime-guard-dotnet](https://github.com/mahdiaghtaee/agent-runtime-guard-dotnet)
 
 ## Featured Project
 
@@ -85,14 +104,13 @@ An archived computer-vision study retained with explicit attribution, reproducib
 
 ## Current Portfolio Status
 
-The current public project cycle is closed cleanly:
+Current active development is focused on Agent Runtime Guard for .NET, with the other public projects kept at clear, reviewable boundaries:
 
+- Agent Runtime Guard for .NET is active at v0.2.0 with deterministic MCP tool-call policy enforcement and bounded local decision receipts;
 - Enterprise AI Document Assistant is maintained as the completed v0.5.1 reference milestone;
 - Enterprise AI Toolkit is maintained as the stable v0.2.0 chat/embedding foundation;
 - Fast Fair Wait-Free Locks is retained as an archived research artifact;
-- broader runtime migrations and speculative framework expansion are deferred rather than left as active promises.
-
-New project work is intentionally kept separate so these repositories remain reviewable at their documented boundaries.
+- broader runtime migrations and speculative framework expansion remain deferred rather than being left as active promises.
 
 ## Contact & Collaboration
 
