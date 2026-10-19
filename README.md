@@ -1,120 +1,44 @@
 # Mahdi Aghtaee
 
-**Senior .NET / Backend / Enterprise / AI Engineer**
+**Senior .NET / Backend / AI Engineer**
 
-I design and build secure, reliable backend systems with **C#**, **ASP.NET Core**, **SQL Server**, **PostgreSQL**, **Redis**, **Docker**, and **OpenTelemetry**, with a focus on enterprise workflows, multi-tenant architecture, data integrity, observability, and AI-enabled applications.
+I build backend systems with **C#**, **ASP.NET Core**, **SQL Server**, **PostgreSQL**, **Redis**, **Docker**, and **OpenTelemetry**. My work is mostly around durable workflows, data integrity, authorization boundaries, observability, and practical AI integrations.
 
-My engineering approach emphasizes explicit trust boundaries, durable processing, database-enforced security, measurable quality, reviewable changes, and production-oriented failure handling.
-
-## Core Engineering Focus
-
-- **Backend:** C#, .NET, ASP.NET Core, REST APIs, background services
-- **Enterprise systems:** durable workflows, transactional boundaries, lifecycle/state management, integrations
-- **Databases:** SQL Server, PostgreSQL, pgvector, Row-Level Security, query and schema design
-- **Architecture:** API/Worker separation, least privilege, multi-tenant systems, service trust boundaries
-- **Security:** JWT, durable authorization, tenant isolation, secure document ingestion, negative security testing
-- **Observability:** OpenTelemetry, structured logging, correlation, metrics, health checks, SLO-oriented monitoring
-- **AI engineering:** RAG, semantic retrieval, grounded answers, provider abstraction, evaluation and citation gates
-- **Infrastructure:** Docker Compose, Redis, CI/CD, GitHub Actions, CodeQL, dependency automation
-
-## Portfolio Snapshot
-
-| Project | Role in portfolio | Status |
-|---|---|---|
-| [Agent Runtime Guard for .NET](https://github.com/mahdiaghtaee/agent-runtime-guard-dotnet) | Pre-execution policy guard for AI/MCP tool calls | Active — v0.2.0 |
-| [Enterprise AI Document Assistant](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant) | Flagship enterprise backend + AI reference system | Maintenance — v0.5.1 |
-| [Enterprise AI Toolkit](https://github.com/mahdiaghtaee/enterprise-ai-toolkit) | Reusable provider-independent .NET contracts | Stable foundation — v0.2.0 |
-| [Fast Fair Wait-Free Locks](https://github.com/mahdiaghtaee/fast-fair-wait-free-locks) | Concurrency research artifact | Archived — v0.1.0 |
-| [Persian License Plate Recognition](https://github.com/mahdiaghtaee/persian-license-plate-recognition) | Computer-vision study with documented provenance | Archived |
-
-The portfolio is intentionally centered on a small number of reviewable projects rather than repository count. Forks used for upstream contributions are secondary to the projects above.
-
-## Current Project
+## Selected Work
 
 ### [Agent Runtime Guard for .NET](https://github.com/mahdiaghtaee/agent-runtime-guard-dotnet)
+A local-first .NET guard for AI-agent and MCP tool calls. It evaluates `Allow`, `RequireApproval`, and `Deny` decisions before execution, and can optionally record bounded SQLite decision receipts.
 
-A focused .NET project for evaluating AI-agent and MCP tool actions before execution.
-
-The current v0.2.0 milestone includes:
-
-- deterministic `Allow`, `RequireApproval`, and `Deny` policy decisions;
-- a stdio MCP proxy that intercepts `tools/call` before the upstream process executes it;
-- tests proving denied tool calls do not reach upstream input;
-- opt-in SQLite decision receipts with bounded metadata, retention, and session-scoped JSONL export;
-- explicit data-minimization tests that exclude prompts, MCP arguments, policy reasons, tags, tool results, and upstream stderr from the receipt schema.
-
-The project is intentionally scoped as an early engineering reference rather than a production security platform.
-
-**Repository:** [agent-runtime-guard-dotnet](https://github.com/mahdiaghtaee/agent-runtime-guard-dotnet)
-
-## Featured Project
+**Current:** v0.2.0 · active development
 
 ### [Enterprise AI Document Assistant](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant)
+A completed enterprise AI reference system built with ASP.NET Core, FastAPI, PostgreSQL/pgvector, Redis, Docker Compose, RLS, durable ingestion, grounded answers, multilingual evaluation, audit logging, and OpenTelemetry.
 
-[![CI](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/codeql.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/codeql.yml)
-[![Dependency Review](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/dependency-review.yml)
-[![Multilingual quality](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/multilingual-evaluation.yml/badge.svg)](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant/actions/workflows/multilingual-evaluation.yml)
+**Current:** v0.5.1 · maintenance
 
-A completed v0.5.x reference milestone for a local-first enterprise document platform built around **ASP.NET Core, FastAPI, PostgreSQL, pgvector, Redis, Docker Compose, semantic retrieval, and grounded AI answers**. The repository is now in maintenance mode.
-
-Selected engineering capabilities:
-
-- durable document ingestion with transactional job creation, bounded retries, recovery, and PostgreSQL `FOR UPDATE SKIP LOCKED` claiming;
-- JWT authentication with durable tenant membership and immediate authorization revocation;
-- forced PostgreSQL Row-Level Security with direct cross-tenant negative tests;
-- separated public API, platform-management, and privileged Worker database identities;
-- safe TXT/PDF/DOCX ingestion with bounded parsing, OOXML validation, spoofed-file rejection, and explicit OCR-required outcomes;
-- persistent pgvector semantic retrieval with reproducible Precision@K, Recall@K, and MRR evaluation;
-- reviewed English, Persian, and mixed-language retrieval/answer evaluation with per-language/category gates and deterministic bootstrap intervals;
-- provider-neutral grounded-answer generation with mandatory citations and insufficient-evidence handling;
-- append-only tenant audit storage, OpenTelemetry traces/metrics, correlation propagation, and operational observability;
-- independent CI coverage for application tests, PostgreSQL integration, document formats, retrieval, multilingual quality, grounding, Dependency Review, and CodeQL.
-
-**Repository:** [enterprise-ai-document-assistant](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant)
+### [Custom ESXi 8 ISO with Network Drivers](https://github.com/mahdiaghtaee/custom-esxi8-iso-with-network-drivers)
+A small PowerCLI workflow for building ESXi 8 installation media with additional community network drivers.
 
 ## Open-Source Contributions
 
-Focused contributions merged into established .NET projects:
+Merged contributions to established .NET projects:
 
-- [dotnet/aspnetcore #67481](https://github.com/dotnet/aspnetcore/pull/67481) — clarified `ActionLink` URL-generation documentation behavior.
-- [dotnet/docs #54567](https://github.com/dotnet/docs/pull/54567) — documented `sizeof` behavior for enum types in the C# language reference.
-- [dotnet/docs #54559](https://github.com/dotnet/docs/pull/54559) — corrected ASP.NET workload documentation in the .NET microservices guidance.
+- [dotnet/aspnetcore #67481](https://github.com/dotnet/aspnetcore/pull/67481) — clarified `ActionLink` URL-generation documentation.
+- [dotnet/docs #54567](https://github.com/dotnet/docs/pull/54567) — documented `sizeof` behavior for enum types.
+- [dotnet/docs #54559](https://github.com/dotnet/docs/pull/54559) — corrected ASP.NET workload guidance in the .NET microservices documentation.
 
-## Selected Projects
+## Other Work
 
-### [Enterprise AI Toolkit](https://github.com/mahdiaghtaee/enterprise-ai-toolkit)
-A stable v0.2.0 .NET foundation for provider-independent chat and embedding contracts with deterministic local providers, explicit vector dimensions/input mapping, a runnable console sample, tests, and CI. Active feature development is paused.
+- [Enterprise AI Toolkit](https://github.com/mahdiaghtaee/enterprise-ai-toolkit) — provider-independent .NET chat and embedding contracts; stable v0.2.0 foundation.
+- [Fast Fair Wait-Free Locks](https://github.com/mahdiaghtaee/fast-fair-wait-free-locks) — frozen research artifact with explicit implementation and benchmark limitations.
+- [Persian License Plate Recognition](https://github.com/mahdiaghtaee/persian-license-plate-recognition) — archived computer-vision study.
 
-### [Fast Fair Wait-Free Locks](https://github.com/mahdiaghtaee/fast-fair-wait-free-locks)
-An archived research artifact preserving scope, attribution, reproducibility requirements, and explicit limitations without claiming a completed benchmark or production synchronization primitive.
+## Core Stack
 
-### [Persian License Plate Recognition](https://github.com/mahdiaghtaee/persian-license-plate-recognition)
-An archived computer-vision study retained with explicit attribution, reproducibility boundaries, and documented limitations.
+`C#` · `.NET` · `ASP.NET Core` · `SQL Server` · `PostgreSQL` · `Redis` · `Docker` · `OpenTelemetry` · `GitHub Actions`
 
-## Engineering Principles
+## Contact
 
-- Prefer durable state over process-memory assumptions.
-- Enforce critical authorization boundaries at more than one layer.
-- Treat external inputs and retrieved AI context as untrusted data.
-- Make failure modes explicit and observable.
-- Use negative tests to validate security boundaries.
-- Measure retrieval and answer quality instead of relying on selected demos.
-- Keep documentation aligned with implemented behavior.
+GitHub: [@mahdiaghtaee](https://github.com/mahdiaghtaee)
 
-## Current Portfolio Status
-
-Current active development is focused on Agent Runtime Guard for .NET, with the other public projects kept at clear, reviewable boundaries:
-
-- Agent Runtime Guard for .NET is active at v0.2.0 with deterministic MCP tool-call policy enforcement and bounded local decision receipts;
-- Enterprise AI Document Assistant is maintained as the completed v0.5.1 reference milestone;
-- Enterprise AI Toolkit is maintained as the stable v0.2.0 chat/embedding foundation;
-- Fast Fair Wait-Free Locks is retained as an archived research artifact;
-- broader runtime migrations and speculative framework expansion remain deferred rather than being left as active promises.
-
-## Contact & Collaboration
-
-- GitHub: [@mahdiaghtaee](https://github.com/mahdiaghtaee)
-- For repository-specific technical collaboration, use the relevant project's Issues or Pull Requests so design decisions and evidence remain reviewable.
-
-No additional public contact channel is listed here unless it can be verified and intentionally maintained.
+For project-specific discussion, use the relevant repository's Issues or Pull Requests.
