@@ -7,9 +7,9 @@ I build backend systems with **C#**, **ASP.NET Core**, **SQL Server**, **Postgre
 ## Selected Work
 
 ### [Agent Runtime Guard for .NET](https://github.com/mahdiaghtaee/agent-runtime-guard-dotnet)
-A local-first .NET guard for AI-agent and MCP tool calls. It evaluates `Allow`, `RequireApproval`, and `Deny` decisions before execution, and can optionally record bounded SQLite decision receipts.
+A local-first .NET enforcement proxy for AI-agent and MCP tool calls. It applies deterministic `Allow`, `RequireApproval`, and `Deny` decisions before upstream execution, with optional local human approval, bounded SQLite receipts, approval telemetry, and a tested Cursor integration.
 
-**Current:** v0.2.0 · active development
+**Current:** v0.3.0 · active development
 
 ### [Enterprise AI Document Assistant](https://github.com/mahdiaghtaee/enterprise-ai-document-assistant)
 A completed enterprise AI reference system built with ASP.NET Core, FastAPI, PostgreSQL/pgvector, Redis, Docker Compose, RLS, durable ingestion, grounded answers, multilingual evaluation, audit logging, and OpenTelemetry.
